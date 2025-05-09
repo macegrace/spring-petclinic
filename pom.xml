@@ -130,31 +130,19 @@
       <artifactId>mysql-connector-java</artifactId>  
       <version>8.0.33</version> 
     </dependency>  
-    <!-- <dependency> 
-      <groupId>com.azure.spring</groupId>  
-      <artifactId>spring-cloud-azure-dependencies</artifactId>
-      <version>5.8.0</version>
-      <type>pom</type>  
-      <scope>import</scope> 
-    </dependency>  -->
-    <!-- https://mvnrepository.com/artifact/com.microsoft.azure/azure-spring-boot-starter -->  
-    <!--<dependency> 
-      <groupId>com.microsoft.azure</groupId>  
-      <artifactId>azure-spring-boot-starter</artifactId>  
-      <version>3.0.0-beta.1</version>
-    </dependency>
-
     <dependency>
-      <groupId>com.azure.spring</groupId>
-      <artifactId>spring-cloud-azure-starter</artifactId>
-      <version>5.8.0</version>
-    </dependency> -->
-
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
     <dependency> 
       <groupId>com.microsoft.sqlserver</groupId>  
       <artifactId>mssql-jdbc</artifactId>  
       <version>6.4.0.jre8</version>  
       <scope>runtime</scope> 
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
     </dependency>
   </dependencies>  
   <build> 
@@ -176,19 +164,6 @@
                 </requireJavaVersion> 
               </rules> 
             </configuration> 
-          </execution> 
-        </executions> 
-      </plugin>  
-      <plugin> 
-        <groupId>io.spring.javaformat</groupId>  
-        <artifactId>spring-javaformat-maven-plugin</artifactId>  
-        <version>${spring-format.version}</version>  
-        <executions> 
-          <execution> 
-            <phase>validate</phase>  
-            <goals> 
-              <goal>validate</goal> 
-            </goals> 
           </execution> 
         </executions> 
       </plugin>  

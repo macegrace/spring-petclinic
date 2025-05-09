@@ -32,6 +32,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import jakarta.validation.Valid;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -49,8 +50,12 @@ class OwnerController {
 
 	private final OwnerRepository owners;
 
-	public OwnerController(OwnerRepository clinicService) {
+	private final PasswordEncoder passwordEncoder;
+
+	@Autowired
+	public OwnerController(OwnerRepository clinicService, PasswordEncoder passwordEncoder) {
 		this.owners = clinicService;
+		this.passwordEncoder = passwordEncoder;
 	}
 
 	@InitBinder
@@ -77,6 +82,7 @@ class OwnerController {
 			return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;
 		}
 
+		owner.setPassword(passwordEncoder.encode(owner.getPassword()));
 		this.owners.save(owner);
 		redirectAttributes.addFlashAttribute("message", "New Owner Created");
 		return "redirect:/owners/" + owner.getId();
